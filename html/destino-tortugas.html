@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nado con Tortugas · Piura Tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/destino.css" />
+    <style>
+      .destino-banner {
+        background-image: url("../img/Tortugas.jpg");
+        background-color: #008080;
+      }
+      .destino-banner::after {
+        background: linear-gradient(
+          to top,
+          rgba(0, 100, 100, 0.85) 0%,
+          transparent 70%
+        );
+      }
+      .destino-titulo h1 {
+        color: #40e0d0;
+      }
+      .destino-titulo p {
+        color: #b0e0e6;
+      }
+      .destino-info h2 {
+        border-bottom-color: #20b2aa;
+      }
+      .destino-info .location {
+        color: #20b2aa;
+      }
+      .btn-back {
+        background: #20b2aa;
+      }
+      .btn-back:hover {
+        background: #148f87;
+        box-shadow: 0 8px 28px rgba(32, 178, 170, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Piura<span>Tours</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#destinos">Destinos</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+        <li id="auth-links">
+          <a href="login.html">Iniciar Sesión</a
+          ><a href="login.html#registro">Registrarse</a>
+        </li>
+        <li id="user-info" style="display: none">
+          <span id="user-name"></span
+          ><a href="#" id="logout-link">Cerrar Sesión</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="destino-detalle">
+      <div class="destino-banner" id="destino-banner">
+        <div class="destino-titulo">
+          <h1 id="destino-nombre">Nado con Tortugas</h1>
+          <p id="destino-slogan">“Un encuentro con la vida marina” 🐢</p>
+        </div>
+      </div>
+
+      <div class="destino-contenido">
+        <div class="destino-info">
+          <h2>🐢 Una experiencia única</h2>
+          <p id="destino-descripcion">
+            En la caleta de <strong>Los Órganos</strong>, tienes la oportunidad
+            de nadar junto a <strong>tortugas verdes</strong> (Chelonia mydas)
+            en su hábitat natural. Sus aguas cristalinas, olas suaves y arena
+            blanca la convierten en un destino perfecto para toda la familia.
+            Esta experiencia es guiada por personal capacitado que promueve la
+            <strong>conservación de estas especies</strong> y el ecoturismo
+            responsable.
+          </p>
+
+          <h2>📍 Ubicación</h2>
+          <p id="destino-ubicacion" class="location">Los Órganos, Piura.</p>
+
+          <h2>🚌 Cómo llegar desde Piura</h2>
+          <p id="destino-como-llegar">
+            Desde Piura, toma un bus con destino a Los Órganos (aproximadamente
+            <strong>3 horas</strong>). Desde Máncora, puedes tomar un micro
+            (EPPO) por 2 soles hasta Los Órganos.
+          </p>
+
+          <h2>📅 Mejores meses para visitar</h2>
+          <p id="destino-meses">
+            <strong>Enero a abril</strong>, cuando el mar está más calmado y las
+            tortugas son más visibles.
+          </p>
+
+          <h2>🍽️ Gastronomía típica</h2>
+          <p id="destino-gastronomia">
+            La costa norte es famosa por su
+            <strong>pescado a la talla</strong> y el
+            <strong>arroz con mariscos</strong>. No te vayas sin probar el
+            <strong>cebiche de pescado</strong> fresco.
+          </p>
+
+          <h2>📖 Actividades y recomendaciones</h2>
+          <p id="destino-historia">
+            El tour incluye una
+            <strong>charla sobre el cuidado de las tortugas</strong> y está
+            guiado por personal capacitado. Es una actividad de
+            <strong>ecoturismo</strong> que promueve la conservación de estas
+            especies. Ideal para <strong>snorkel</strong> y
+            <strong>fotografía submarina</strong>. Recuerda no usar bloqueador
+            solar dañino para el ecosistema marino.
+          </p>
+
+          <div class="destino-video">
+            <h2>🎥 Video del lugar</h2>
+            <div id="destino-video-container">
+              <video
+                controls
+                width="100%"
+                style="border-radius: 16px; max-width: 800px"
+              >
+                <source src="../video/tortuga.mp4" type="video/mp4" />
+                Tu navegador no soporta el elemento video.
+              </video>
+            </div>
+          </div>
+          <!-- Actividades -->
+          <div class="actividades">
+            <h2>🐢 Actividades para disfrutar</h2>
+            <ul>
+              <li><span class="icon">🏊</span> Nado con tortugas verdes</li>
+              <li>
+                <span class="icon">🤿</span> Snorkel y fotografía submarina
+              </li>
+              <li><span class="icon">🐠</span> Observación de fauna marina</li>
+              <li><span class="icon">📸</span> Fotografía bajo el agua</li>
+              <li><span class="icon">🌊</span> Paseos en bote por la costa</li>
+              <li><span class="icon">🌱</span> Tours de conservación marina</li>
+            </ul>
+          </div>
+          <div class="destino-mapa">
+            <h2>🗺️ Ubicación en Google Maps</h2>
+            <div id="destino-gps">
+              <a
+                href="https://maps.app.goo.gl/5UMWH57gdgaaakgf9"
+                target="_blank"
+                style="
+                  display: inline-block;
+                  background: #ff7e5f;
+                  color: #fff;
+                  padding: 0.8rem 2rem;
+                  border-radius: 60px;
+                  font-weight: 600;
+                  text-decoration: none;
+                  transition: all 0.3s ease;
+                  box-shadow: 0 4px 16px rgba(255, 126, 95, 0.25);
+                "
+              >
+                🗺️ Ver en Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="index.html" class="btn btn-back">Volver al Inicio</a>
+      </div>
+    </main>
+
+    <script src="../js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof cargarDestinoPorId === "function") cargarDestinoPorId(5);
+      });
+    </script>
+  </body>
+</html>

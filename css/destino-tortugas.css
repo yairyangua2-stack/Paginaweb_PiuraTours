@@ -1,0 +1,58 @@
+/* ================================================================
+   destino-tortugas.css – Estilos exclusivos para Tortugas
+   Paleta: Turquesa, coral y aguas cristalinas
+   ================================================================ */
+
+/* ---------- Banner ---------- */
+.destino-banner {
+  background-image: url("../img/Tortugas.jpg");
+  background-color: #008080;
+}
+.destino-banner::after {
+  background: linear-gradient(
+    to top,
+    rgba(0, 100, 100, 0.85) 0%,
+    transparent 70%
+  );
+}
+.destino-titulo h1 {
+  color: #40e0d0;
+  text-shadow: 0 4px 20px rgba(64, 224, 208, 0.3);
+}
+.destino-titulo p {
+  color: #b0e0e6;
+}
+
+/* ---------- Contenido ---------- */
+.destino-info h2 {
+  border-bottom-color: #20b2aa;
+}
+.destino-info .location {
+  color: #20b2aa;
+}
+.destino-info p strong {
+  color: #40e0d0;
+}
+
+/* ---------- Botones ---------- */
+.btn-back {
+  background: #20b2aa;
+}
+.btn-back:hover {
+  background: #148f87;
+  box-shadow: 0 8px 28px rgba(32, 178, 170, 0.4);
+}
+
+/* ---------- Mapa ---------- */
+.destino-mapa #destino-gps a {
+  background: #20b2aa;
+  box-shadow: 0 4px 16px rgba(32, 178, 170, 0.25);
+}
+.destino-mapa #destino-gps a:hover {
+  box-shadow: 0 8px 28px rgba(32, 178, 170, 0.4);
+}
+
+/* ---------- Video ---------- */
+.destino-video #destino-video-container {
+  border: 2px solid #40e0d0;
+}

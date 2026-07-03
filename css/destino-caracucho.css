@@ -1,0 +1,73 @@
+/* ================================================================
+   destino-caracucho.css – Estilos exclusivos para Caracucho
+   Paleta: Verde agua, azul profundo y musgo
+   ================================================================ */
+
+/* ---------- Banner ---------- */
+.destino-banner {
+  background-image: url("../img/Cataratas.jpg");
+  background-color: #1a3a4a;
+}
+.destino-banner::after {
+  background: linear-gradient(
+    to top,
+    rgba(26, 58, 74, 0.85) 0%,
+    transparent 70%
+  );
+}
+.destino-titulo h1 {
+  color: #1de9b6;
+  text-shadow: 0 4px 20px rgba(29, 233, 182, 0.3);
+}
+.destino-titulo p {
+  color: #8fcbdb;
+}
+
+/* ---------- Contenido ---------- */
+.destino-info h2 {
+  border-bottom-color: #3a7b8c;
+}
+.destino-info .location {
+  color: #3a7b8c;
+}
+.destino-info p strong {
+  color: #1de9b6;
+}
+
+/* ---------- Botones ---------- */
+.btn-back {
+  background: #3a7b8c;
+}
+.btn-back:hover {
+  background: #1f4f5c;
+  box-shadow: 0 8px 28px rgba(58, 123, 140, 0.4);
+}
+
+/* ---------- Mapa ---------- */
+.destino-mapa #destino-gps a {
+  background: #3a7b8c;
+  box-shadow: 0 4px 16px rgba(58, 123, 140, 0.25);
+}
+.destino-mapa #destino-gps a:hover {
+  box-shadow: 0 8px 28px rgba(58, 123, 140, 0.4);
+}
+
+/* ---------- Video ---------- */
+.destino-video #destino-video-container {
+  border: 2px solid #1de9b6;
+}
+/* Video a todo el ancho */
+.destino-video #destino-video-container {
+  padding: 0;                /* Elimina el padding interno */
+  border: none;              /* Opcional: quita el borde si lo tenías */
+  background: transparent;   /* Fondo transparente */
+}
+.destino-video video {
+  width: 100%;               /* Ocupa todo el ancho */
+  max-width: 100%;           /* Sin límite máximo */
+  height: auto;
+  aspect-ratio: 16 / 9;      /* Mantiene proporción 16:9 */
+  display: block;
+  border-radius: 16px;       /* Mantén las esquinas redondeadas */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}

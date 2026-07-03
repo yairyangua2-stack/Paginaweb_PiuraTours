@@ -1,0 +1,251 @@
+/* ================================================================
+   ================================================================ */
+
+/* ---------- Banner principal ---------- */
+.destino-banner {
+  height: 60vh;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: 3rem 10%;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
+.destino-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 70%);
+  z-index: 1;
+}
+.destino-titulo {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  animation: slideUp 0.8s ease 0.3s both;
+}
+.destino-titulo h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+  line-height: 1.1;
+}
+.destino-titulo p {
+  font-size: 1.3rem;
+  font-weight: 300;
+  opacity: 0.9;
+  max-width: 600px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Contenido principal ---------- */
+.destino-contenido {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+  animation: fadeInUp 1s ease 0.4s both;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.destino-info {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 30px;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+}
+.destino-info h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 1.2rem 0 0.2rem;
+  border-bottom: 3px solid #ff7e5f;
+  padding-bottom: 0.3rem;
+  display: inline-block;
+}
+.destino-info h2:first-of-type {
+  margin-top: 0;
+}
+.destino-info p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #d1d5db;
+  margin: 0;
+}
+.destino-info .location {
+  font-weight: 600;
+  color: #ff7e5f;
+}
+.destino-info strong {
+  color: #fbbf24;
+}
+/* ============================================================
+   VIDEO Y MAPA (dentro de destino-info)
+   ============================================================ */
+
+/* Video a todo el ancho */
+.destino-video #destino-video-container {
+  padding: 0;                /* Elimina el padding interno */
+  border: none;              /* Opcional: quita el borde si lo tenías */
+  background: transparent;   /* Fondo transparente */
+}
+.destino-video video {
+  width: 100%;               /* Ocupa todo el ancho */
+  max-width: 100%;           /* Sin límite máximo */
+  height: auto;
+  aspect-ratio: 16 / 9;      /* Mantiene proporción 16:9 */
+  display: block;
+  border-radius: 16px;       /* Mantén las esquinas redondeadas */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+/* --- Contenedor del video (full-width sin padding) --- */
+.destino-video #destino-video-container {
+  margin-top: 0.5rem;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #000; /* Fondo negro para contraste */
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+/* --- Video e iframe ocupan todo el ancho, sin max-width --- */
+.destino-video video,
+.destino-video iframe {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+  background: #000;
+  aspect-ratio: 16 / 9; /* Mantiene proporción 16:9 */
+  object-fit: cover; /* Recorta ligeramente si es necesario */
+}
+
+/* --- Si el video es local, también se ajusta --- */
+.destino-video video {
+  object-fit: cover;
+}
+
+/* --- Mapa (se mantiene igual) --- */
+.destino-mapa #destino-gps {
+  margin-top: 0.5rem;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  text-align: center;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  color: #94a3b8;
+}
+.destino-mapa #destino-gps a {
+  display: inline-block;
+  background: #ff7e5f;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 60px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(255, 126, 95, 0.25);
+}
+.destino-mapa #destino-gps a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 28px rgba(255, 126, 95, 0.4);
+}
+/* ============================================================
+   ACTIVIDADES
+   ============================================================ */
+.actividades {
+  margin-top: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.actividades h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  border-bottom: 3px solid #ff7e5f;
+  padding-bottom: 0.3rem;
+  display: inline-block;
+  margin-bottom: 1.2rem;
+}
+.actividades ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem 1.5rem;
+}
+.actividades ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #d1d5db;
+  font-size: 1rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.actividades ul li:last-child {
+  border-bottom: none;
+}
+.actividades ul li .icon {
+  font-size: 1.3rem;
+  width: 2rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .actividades ul {
+    grid-template-columns: 1fr;
+  }
+  .actividades {
+    padding: 1rem;
+  }
+}

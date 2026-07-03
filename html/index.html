@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Guía Turística de Piura - La ciudad del eterno calor. Descubre playas, arqueología y ecoturismo."
+    />
+    <title>Guía Turística de Piura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar">
+      <div class="logo">Piura<span>Tours</span></div>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#destinos">Destinos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li id="auth-links">
+          <a href="login.html">Iniciar Sesión</a>
+          <a href="login.html#registro">Registrarse</a>
+        </li>
+        <li id="user-info" style="display: none">
+          <span id="user-name"></span>
+          <a href="#" id="logout-link">Cerrar Sesión</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <header id="inicio" class="hero">
+      <div class="hero-content">
+        <h1>Descubre la Magia de <span>Piura</span></h1>
+        <p>
+          La ciudad del eterno calor te espera. Explora playas paradisíacas,
+          cultura milenaria y deliciosa gastronomía.
+        </p>
+        <a href="#destinos" class="btn">Explorar Destinos</a>
+      </div>
+      <div class="hero-image">
+        <img
+          src="../img/plaza-de-armas-piura.jpg"
+          alt="Plaza de Armas de Piura"
+        />
+      </div>
+    </header>
+
+    <main>
+      <!-- ==================== DESTINOS ==================== -->
+      <section id="destinos" class="destinations">
+        <div class="section-header">
+          <h2>Lugares Turísticos</h2>
+          <div class="divider"></div>
+          <p>Nuestra selección de los mejores destinos en la región.</p>
+          <div class="filters">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Buscar destino..."
+            />
+            <select id="sort-select">
+              <option value="nombre">Ordenar por nombre</option>
+              <option value="ubicacion">Ordenar por ubicación</option>
+            </select>
+          </div>
+        </div>
+        <div class="cards-grid" id="cards-container"></div>
+      </section>
+
+      <!-- ==================== CONTACTO / EXPERIENCIA ==================== -->
+      <section id="contacto" class="contact-section">
+        <div class="contact-container glass-panel">
+          <h2>Comparte tu experiencia</h2>
+          <p>Cuéntanos qué lugar te gustó más y ayúdanos a mejorar 😁😎</p>
+
+          <form class="contact-form" id="contact-form">
+            <div class="input-group">
+              <textarea
+                id="comentario"
+                required
+                placeholder=" "
+                rows="4"
+              ></textarea>
+              <label for="comentario">Tu comentario o sugerencia</label>
+            </div>
+            <button type="submit" class="submit-btn">
+              <span>Enviar mensaje</span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+            </button>
+          </form>
+
+          <!-- Enlace a sugerir destino (alternativa) -->
+          <p
+            style="
+              margin-top: 1.5rem;
+              font-size: 0.9rem;
+              color: var(--text-muted);
+            "
+          >
+            ¿No encontraste tu destino favorito?
+            <a
+              href="sugerir.html"
+              style="color: #ff7e5f; font-weight: 600; text-decoration: none"
+            >
+              Sugiere uno nuevo
+            </a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="../js/script.js"></script>
+    
+  </body>
+</html>

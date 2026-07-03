@@ -1,0 +1,349 @@
+/* ============================================================
+   login.css – Estilos exclusivos para la página de Login/Registro
+   Tono: Cálido, moderno, con glassmorphism y animaciones sutiles
+   ============================================================ */
+
+/* ---------- Fondo general ---------- */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fdf6f0 0%, #fde9d8 50%, #fce4d6 100%);
+  background-size: 400% 400%;
+  animation: gradienteMovil 12s ease infinite;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes gradienteMovil {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Decoración de fondo (círculos difuminados) */
+.auth-container::before,
+.auth-container::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+}
+.auth-container::before {
+  width: 500px;
+  height: 500px;
+  background: #f97316;
+  top: -150px;
+  right: -150px;
+}
+.auth-container::after {
+  width: 400px;
+  height: 400px;
+  background: #facc15;
+  bottom: -100px;
+  left: -100px;
+}
+
+/* ---------- Tarjeta principal ---------- */
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 2.5rem 2rem 2rem;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.08),
+    0 10px 30px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  z-index: 1;
+  transform: translateY(0);
+  animation: entrarTarjeta 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.auth-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.12);
+}
+
+@keyframes entrarTarjeta {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.auth-card h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2a2a4a;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+.auth-card h2::after {
+  content: " 🌞";
+  font-size: 1.8rem;
+}
+.auth-card .subtitulo {
+  text-align: center;
+  color: #6b6b80;
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-top: -0.2rem;
+  margin-bottom: 1.8rem;
+}
+
+/* ---------- Pestañas (tabs) ---------- */
+.auth-tabs {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 0.4rem;
+  border-radius: 60px;
+  backdrop-filter: blur(4px);
+}
+.tab-btn {
+  flex: 1;
+  padding: 0.7rem 0.5rem;
+  border: none;
+  border-radius: 40px;
+  background: transparent;
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #6b6b80;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+.tab-btn.active {
+  background: #f97316;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.25);
+}
+.tab-btn:not(.active):hover {
+  background: rgba(249, 115, 22, 0.08);
+  color: #2a2a4a;
+}
+.tab-btn:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
+
+/* ---------- Formularios ---------- */
+.auth-form {
+  display: block;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+/* Clase para ocultar con animación (en lugar de display: none) */
+.auth-form.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  /* No usar display: none para que la transición funcione */
+}
+.auth-form:not(.hidden) {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ---------- Campos con etiqueta flotante ---------- */
+.auth-form .input-group {
+  position: relative;
+  margin-bottom: 1.8rem;
+}
+
+.auth-form .input-group input,
+.auth-form .input-group textarea {
+  width: 100%;
+  padding: 1.2rem 1rem 0.6rem;
+  border: 2px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  font-size: 1rem;
+  font-family: "Outfit", sans-serif;
+  transition:
+    border 0.3s,
+    box-shadow 0.3s,
+    background 0.3s;
+  outline: none;
+  color: #1e1e2f;
+  /* Necesario para que el placeholder sea visible pero no afecte al label */
+}
+.auth-form .input-group input:focus,
+.auth-form .input-group textarea:focus {
+  border-color: #f97316;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
+}
+.auth-form .input-group input.error,
+.auth-form .input-group textarea.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.1);
+}
+
+/* Label flotante */
+.auth-form .input-group label {
+  position: absolute;
+  left: 1rem;
+  top: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #8a8a9e;
+  transition: all 0.25s ease;
+  pointer-events: none;
+  background: transparent;
+  padding: 0 0.2rem;
+  transform-origin: left top;
+}
+
+/* Cuando el input tiene focus o tiene contenido (placeholder=" " o valor) */
+.auth-form .input-group input:focus ~ label,
+.auth-form .input-group input:not(:placeholder-shown) ~ label,
+.auth-form .input-group textarea:focus ~ label,
+.auth-form .input-group textarea:not(:placeholder-shown) ~ label {
+  top: 0.3rem;
+  font-size: 0.7rem;
+  color: #f97316;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+/* Si el campo tiene error, el label se pone rojo */
+.auth-form .input-group input.error ~ label,
+.auth-form .input-group textarea.error ~ label {
+  color: #e74c3c;
+}
+
+/* ---------- Botón de envío ---------- */
+.auth-form .submit-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 60px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #fff;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 24px rgba(249, 115, 22, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0.01em;
+}
+.auth-form .submit-btn:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 12px 36px rgba(249, 115, 22, 0.45);
+}
+.auth-form .submit-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+.auth-form .submit-btn:focus-visible {
+  outline: 3px solid #f97316;
+  outline-offset: 3px;
+}
+
+/* ---------- Mensajes de error ---------- */
+.auth-error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.8rem;
+  text-align: center;
+  background: rgba(231, 76, 60, 0.06);
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  border: 1px solid rgba(231, 76, 60, 0.15);
+  font-weight: 500;
+  min-height: 2.5rem;
+  transition: all 0.3s;
+}
+.auth-error:empty {
+  display: none;
+}
+
+/* ---------- Enlace al index (opcional) ---------- */
+.auth-extra {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #6b6b80;
+}
+.auth-extra a {
+  color: #f97316;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.auth-extra a:hover {
+  color: #ea580c;
+  text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 2rem 1.25rem;
+    border-radius: 30px;
+  }
+  .auth-card h2 {
+    font-size: 1.7rem;
+  }
+  .tab-btn {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.3rem;
+  }
+  .auth-form .input-group input,
+  .auth-form .input-group textarea {
+    padding: 1rem 0.8rem 0.5rem;
+    font-size: 0.95rem;
+  }
+  .auth-form .submit-btn {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+}
+
+/* ---------- Mejora de accesibilidad ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .auth-container {
+    animation: none;
+  }
+  .auth-card {
+    animation: none;
+    transform: none !important;
+  }
+  .auth-card:hover {
+    transform: none !important;
+  }
+}

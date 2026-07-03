@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sugerir destino · Piura Tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <style>
+      .sugerir-container {
+        max-width: 600px;
+        margin: 120px auto 4rem;
+        padding: 2.5rem;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      }
+      .sugerir-container h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+      .sugerir-container p {
+        color: var(--text-muted);
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .sugerir-container .input-group {
+        margin-bottom: 1.5rem;
+      }
+      .sugerir-container .submit-btn {
+        width: 100%;
+      }
+      .btn-volver {
+        display: inline-block;
+        margin-top: 1.5rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+      .btn-volver:hover {
+        color: var(--primary);
+      }
+      #sugerir-mensaje {
+        margin-top: 1rem;
+        text-align: center;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Piura<span>Tours</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#destinos">Destinos</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="sugerir-container">
+        <h1>✍️ Sugerir nuevo destino</h1>
+        <p>
+          ¿No encontraste lo que buscabas? Ayúdanos a crecer recomendando un
+          lugar turístico de Piura.
+        </p>
+
+        <form id="sugerir-form">
+          <div class="input-group">
+            <input type="text" id="s-nombre" required placeholder=" " />
+            <label for="s-nombre">Nombre del lugar *</label>
+          </div>
+          <div class="input-group">
+            <textarea
+              id="s-descripcion"
+              required
+              placeholder=" "
+              rows="4"
+            ></textarea>
+            <label for="s-descripcion">Descripción breve *</label>
+          </div>
+          <div class="input-group">
+            <input type="text" id="s-ubicacion" required placeholder=" " />
+            <label for="s-ubicacion">Ubicación (ciudad/distrito) *</label>
+          </div>
+          <div class="input-group">
+            <select
+              id="s-categoria"
+              required
+              style="
+                width: 100%;
+                padding: 1rem;
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--surface-border);
+                border-radius: 12px;
+                color: var(--text-main);
+                font-family: inherit;
+              "
+            >
+              <option value="">Selecciona una categoría *</option>
+              <option value="Playa">🏖️ Playa</option>
+              <option value="Arqueológico">🏺 Arqueológico</option>
+              <option value="Ecoturismo">🌿 Ecoturismo</option>
+              <option value="Desierto">🏜️ Desierto</option>
+              <option value="Fauna Marina">🐢 Fauna Marina</option>
+              <option value="Naturaleza">💧 Naturaleza</option>
+              <option value="Otro">🌟 Otro</option>
+            </select>
+            <label for="s-categoria">Categoría</label>
+          </div>
+          <button type="submit" class="submit-btn">Enviar sugerencia</button>
+          <p id="sugerir-mensaje"></p>
+        </form>
+
+        <a href="index.html" class="btn-volver">← Volver al inicio</a>
+      </div>
+    </main>
+
+    <script src="../js/script.js"></script>
+    <script>
+      // Lógica específica para sugerir.html
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("sugerir-form");
+        const mensaje = document.getElementById("sugerir-mensaje");
+
+        // Verificar si el usuario está logueado
+        const token = localStorage.getItem("token");
+        const userData = JSON.parse(localStorage.getItem("user") || "null");
+
+        if (!token || !userData) {
+          mensaje.innerHTML =
+            '⚠️ Debes <a href="login.html" style="color:#ff7e5f;">iniciar sesión</a> para sugerir un destino.';
+          mensaje.style.color = "#fbbf24";
+          form.querySelector('button[type="submit"]').disabled = true;
+          return;
+        }
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const nombre = document.getElementById("s-nombre").value.trim();
+          const descripcion = document
+            .getElementById("s-descripcion")
+            .value.trim();
+          const ubicacion = document.getElementById("s-ubicacion").value.trim();
+          const categoria = document.getElementById("s-categoria").value;
+
+          if (!nombre || !descripcion || !ubicacion || !categoria) {
+            mensaje.textContent = "❌ Todos los campos son obligatorios.";
+            mensaje.style.color = "#f87171";
+            return;
+          }
+
+          try {
+            const response = await fetch(
+              "http://localhost:3000/api/solicitudes",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  nombre,
+                  descripcion,
+                  ubicacion,
+                  categoria,
+                  email: userData.email,
+                }),
+              },
+            );
+            const data = await response.json();
+            if (response.ok) {
+              mensaje.textContent =
+                "✅ ¡Sugerencia enviada! Muchas gracias por contribuir.";
+              mensaje.style.color = "#4ade80";
+              form.reset();
+              setTimeout(() => {
+                window.location.href = "../index.html";
+              }, 3000);
+            } else {
+              mensaje.textContent =
+                "❌ Error: " + (data.error || "No se pudo enviar");
+              mensaje.style.color = "#f87171";
+            }
+          } catch (error) {
+            mensaje.textContent = "❌ Error de conexión. Intenta de nuevo.";
+            mensaje.style.color = "#f87171";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

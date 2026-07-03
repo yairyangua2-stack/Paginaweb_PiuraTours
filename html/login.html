@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Registro - Piura Tours</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-card glass-panel">
+        <h2>Bienvenido a Piura Tours</h2>
+        <div class="auth-tabs">
+          <button class="tab-btn active" data-tab="login">
+            Iniciar Sesión
+          </button>
+          <button class="tab-btn" data-tab="registro">Registrarse</button>
+        </div>
+
+        <!-- Formulario Login -->
+        <form id="login-form" class="auth-form">
+          <div class="input-group">
+            <input type="email" id="login-email" required placeholder=" " />
+            <label for="login-email">Correo electrónico</label>
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              id="login-password"
+              required
+              placeholder=" "
+            />
+            <label for="login-password">Contraseña</label>
+            <!-- ✅ Texto corregido -->
+          </div>
+          <button type="submit" class="submit-btn">Ingresar</button>
+          
+          <p class="auth-error" id="login-error"></p>
+        </form>
+
+        <!-- Formulario Registro -->
+        <form id="registro-form" class="auth-form" style="display: none">
+          <div class="input-group">
+            <input type="text" id="reg-nombre" required placeholder=" " />
+            <label for="reg-nombre">Nombre completo</label>
+          </div>
+          <div class="input-group">
+            <input type="email" id="reg-email" required placeholder=" " />
+            <label for="reg-email">Correo electrónico</label>
+          </div>
+          <div class="input-group">
+            <input type="password" id="reg-password" required placeholder=" " />
+            <label for="reg-password">Contraseña</label>
+          </div>
+          <button type="submit" class="submit-btn">Registrarse</button>
+          <p class="auth-error" id="registro-error"></p>
+        </form>
+      </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>
