@@ -12,46 +12,260 @@
     />
     <link rel="stylesheet" href="../css/styles.css" />
     <style>
+      /* ===== CONTENEDOR PRINCIPAL ===== */
       .sugerir-container {
         max-width: 600px;
         margin: 120px auto 4rem;
-        padding: 2.5rem;
+        padding: 2.8rem 2.5rem;
         background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 30px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        border-radius: 32px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.8s ease forwards;
       }
+
+      /* Efecto de brillo decorativo */
+      .sugerir-container::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -30%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 126, 95, 0.15),
+          transparent 70%
+        );
+        border-radius: 50%;
+        z-index: -1;
+        pointer-events: none;
+      }
+
       .sugerir-container h1 {
-        font-size: 2.2rem;
-        margin-bottom: 0.5rem;
+        font-size: 2.4rem;
+        font-weight: 800;
         text-align: center;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
       }
-      .sugerir-container p {
+      .sugerir-container h1 span {
+        color: var(--primary);
+      }
+
+      .sugerir-container .subtitulo {
         color: var(--text-muted);
         text-align: center;
         margin-bottom: 2rem;
+        font-size: 1.05rem;
+        line-height: 1.5;
       }
+
+      /* ===== FORMULARIO ===== */
       .sugerir-container .input-group {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.8rem;
+        position: relative;
       }
+
+      .sugerir-container .input-group input,
+      .sugerir-container .input-group textarea,
+      .sugerir-container .input-group select {
+        width: 100%;
+        padding: 1.2rem 1rem 0.6rem;
+        background: rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        color: var(--text-main);
+        font-size: 1rem;
+        font-family: "Outfit", sans-serif;
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      .sugerir-container .input-group input:focus,
+      .sugerir-container .input-group textarea:focus,
+      .sugerir-container .input-group select:focus {
+        border-color: var(--primary);
+        background: rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 0 4px rgba(255, 126, 95, 0.1);
+      }
+
+      .sugerir-container .input-group label {
+        position: absolute;
+        left: 1rem;
+        top: 0.9rem;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        transition: all 0.25s ease;
+        pointer-events: none;
+        background: transparent;
+        padding: 0 0.2rem;
+      }
+
+      .sugerir-container .input-group input:focus ~ label,
+      .sugerir-container .input-group input:not(:placeholder-shown) ~ label,
+      .sugerir-container .input-group textarea:focus ~ label,
+      .sugerir-container .input-group textarea:not(:placeholder-shown) ~ label,
+      .sugerir-container .input-group select:focus ~ label,
+      .sugerir-container .input-group select:not(:placeholder-shown) ~ label {
+        top: 0.2rem;
+        font-size: 0.7rem;
+        color: var(--primary);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      /* Estilo específico para el select */
+      .sugerir-container .input-group select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 2.5rem;
+        cursor: pointer;
+      }
+
+      .sugerir-container .input-group select option {
+        background: #1e293b;
+        color: #fff;
+      }
+
+      /* ===== BOTÓN DE ENVÍO ===== */
       .sugerir-container .submit-btn {
         width: 100%;
+        padding: 1.2rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border: none;
+        border-radius: 60px;
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 24px rgba(255, 126, 95, 0.3);
+        letter-spacing: 0.01em;
+        margin-top: 0.5rem;
       }
-      .btn-volver {
-        display: inline-block;
-        margin-top: 1.5rem;
-        color: var(--text-muted);
-        text-decoration: none;
-        transition: var(--transition);
+
+      .sugerir-container .submit-btn:hover:not(:disabled) {
+        transform: translateY(-3px) scale(1.01);
+        box-shadow: 0 12px 36px rgba(255, 126, 95, 0.45);
       }
-      .btn-volver:hover {
-        color: var(--primary);
+
+      .sugerir-container .submit-btn:active:not(:disabled) {
+        transform: scale(0.97);
       }
+
+      .sugerir-container .submit-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        filter: grayscale(0.3);
+      }
+
+      /* ===== MENSAJE ===== */
       #sugerir-mensaje {
-        margin-top: 1rem;
+        margin-top: 1.2rem;
+        padding: 0.8rem 1.2rem;
+        border-radius: 16px;
         text-align: center;
         font-weight: 500;
+        font-size: 0.95rem;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+        min-height: 3.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #sugerir-mensaje.error {
+        color: #f87171;
+        border-color: rgba(248, 113, 113, 0.3);
+        background: rgba(248, 113, 113, 0.08);
+      }
+
+      #sugerir-mensaje.success {
+        color: #4ade80;
+        border-color: rgba(74, 222, 128, 0.3);
+        background: rgba(74, 222, 128, 0.08);
+      }
+
+      #sugerir-mensaje.warning {
+        color: #fbbf24;
+        border-color: rgba(251, 191, 36, 0.3);
+        background: rgba(251, 191, 36, 0.08);
+      }
+
+      /* ===== ENLACE VOLVER ===== */
+      .btn-volver {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.8rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 30px;
+        border: 1px solid transparent;
+      }
+
+      .btn-volver:hover {
+        color: var(--primary);
+        border-color: rgba(255, 126, 95, 0.2);
+        background: rgba(255, 126, 95, 0.05);
+        transform: translateX(-4px);
+      }
+
+      .btn-volver::before {
+        content: "←";
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .btn-volver:hover::before {
+        transform: translateX(-4px);
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 640px) {
+        .sugerir-container {
+          margin: 100px 1rem 3rem;
+          padding: 2rem 1.5rem;
+          border-radius: 24px;
+        }
+        .sugerir-container h1 {
+          font-size: 1.8rem;
+        }
+        .sugerir-container .input-group input,
+        .sugerir-container .input-group textarea,
+        .sugerir-container .input-group select {
+          font-size: 0.95rem;
+          padding: 1rem 0.8rem 0.5rem;
+        }
+        .sugerir-container .submit-btn {
+          font-size: 1rem;
+          padding: 1rem;
+        }
+      }
+
+      /* ===== ANIMACIÓN ===== */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
   </head>
@@ -67,8 +281,8 @@
 
     <main>
       <div class="sugerir-container">
-        <h1>✍️ Sugerir nuevo destino</h1>
-        <p>
+        <h1>✍️ Sugerir <span>nuevo destino</span></h1>
+        <p class="subtitulo">
           ¿No encontraste lo que buscabas? Ayúdanos a crecer recomendando un
           lugar turístico de Piura.
         </p>
@@ -78,6 +292,7 @@
             <input type="text" id="s-nombre" required placeholder=" " />
             <label for="s-nombre">Nombre del lugar *</label>
           </div>
+
           <div class="input-group">
             <textarea
               id="s-descripcion"
@@ -87,24 +302,14 @@
             ></textarea>
             <label for="s-descripcion">Descripción breve *</label>
           </div>
+
           <div class="input-group">
             <input type="text" id="s-ubicacion" required placeholder=" " />
             <label for="s-ubicacion">Ubicación (ciudad/distrito) *</label>
           </div>
+
           <div class="input-group">
-            <select
-              id="s-categoria"
-              required
-              style="
-                width: 100%;
-                padding: 1rem;
-                background: rgba(0, 0, 0, 0.3);
-                border: 1px solid var(--surface-border);
-                border-radius: 12px;
-                color: var(--text-main);
-                font-family: inherit;
-              "
-            >
+            <select id="s-categoria" required>
               <option value="">Selecciona una categoría *</option>
               <option value="Playa">🏖️ Playa</option>
               <option value="Arqueológico">🏺 Arqueológico</option>
@@ -116,35 +321,39 @@
             </select>
             <label for="s-categoria">Categoría</label>
           </div>
+
           <button type="submit" class="submit-btn">Enviar sugerencia</button>
-          <p id="sugerir-mensaje"></p>
+          <div id="sugerir-mensaje"></div>
         </form>
 
-        <a href="index.html" class="btn-volver">← Volver al inicio</a>
+        <!-- ===== ENLACE VOLVER CORREGIDO ===== -->
+        <a href="../html/index.html" class="btn-volver">Volver al inicio</a>
       </div>
     </main>
 
     <script src="../js/script.js"></script>
     <script>
-      // Lógica específica para sugerir.html
       document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById("sugerir-form");
         const mensaje = document.getElementById("sugerir-mensaje");
 
-        // Verificar si el usuario está logueado
         const token = localStorage.getItem("token");
         const userData = JSON.parse(localStorage.getItem("user") || "null");
 
+        // Limpiar clases previas
+        mensaje.className = "";
+
         if (!token || !userData) {
           mensaje.innerHTML =
-            '⚠️ Debes <a href="login.html" style="color:#ff7e5f;">iniciar sesión</a> para sugerir un destino.';
-          mensaje.style.color = "#fbbf24";
+            '⚠️ Debes <a href="../login.html" style="color:#ff7e5f; font-weight:600;">iniciar sesión</a> para sugerir un destino.';
+          mensaje.className = "warning";
           form.querySelector('button[type="submit"]').disabled = true;
           return;
         }
 
         form.addEventListener("submit", async (e) => {
           e.preventDefault();
+
           const nombre = document.getElementById("s-nombre").value.trim();
           const descripcion = document
             .getElementById("s-descripcion")
@@ -152,9 +361,13 @@
           const ubicacion = document.getElementById("s-ubicacion").value.trim();
           const categoria = document.getElementById("s-categoria").value;
 
+          // Resetear mensaje
+          mensaje.className = "";
+          mensaje.textContent = "";
+
           if (!nombre || !descripcion || !ubicacion || !categoria) {
             mensaje.textContent = "❌ Todos los campos son obligatorios.";
-            mensaje.style.color = "#f87171";
+            mensaje.className = "error";
             return;
           }
 
@@ -176,23 +389,25 @@
                 }),
               },
             );
+
             const data = await response.json();
+
             if (response.ok) {
               mensaje.textContent =
                 "✅ ¡Sugerencia enviada! Muchas gracias por contribuir.";
-              mensaje.style.color = "#4ade80";
+              mensaje.className = "success";
               form.reset();
               setTimeout(() => {
-                window.location.href = "../index.html";
+                window.location.href = "../html/index.html";
               }, 3000);
             } else {
               mensaje.textContent =
                 "❌ Error: " + (data.error || "No se pudo enviar");
-              mensaje.style.color = "#f87171";
+              mensaje.className = "error";
             }
           } catch (error) {
             mensaje.textContent = "❌ Error de conexión. Intenta de nuevo.";
-            mensaje.style.color = "#f87171";
+            mensaje.className = "error";
           }
         });
       });
