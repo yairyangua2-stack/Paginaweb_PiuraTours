@@ -13,8 +13,11 @@
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/destino.css" />
     <style>
+      /* ===== BANNER CON IMAGEN FIJA DESDE LA CARPETA img/ ===== */
       .destino-banner {
         background-image: url("../img/Cataratas.jpg");
+        background-size: cover;
+        background-position: center;
         background-color: #1a3a4a;
       }
       .destino-banner::after {
@@ -30,6 +33,8 @@
       .destino-titulo p {
         color: #8fcbdb;
       }
+
+      /* ===== CONTENIDO ===== */
       .destino-info h2 {
         border-bottom-color: #3a7b8c;
       }
@@ -39,6 +44,8 @@
       .destino-info p strong {
         color: #1de9b6;
       }
+
+      /* ===== BOTÓN VOLVER ===== */
       .btn-back {
         background: #3a7b8c;
       }
@@ -46,15 +53,21 @@
         background: #1f4f5c;
         box-shadow: 0 8px 28px rgba(58, 123, 140, 0.4);
       }
+
+      /* ===== MAPA ===== */
       .destino-mapa #destino-gps a {
         background: #3a7b8c;
       }
       .destino-mapa #destino-gps a:hover {
         box-shadow: 0 8px 28px rgba(58, 123, 140, 0.4);
       }
+
+      /* ===== VIDEO ===== */
       .destino-video #destino-video-container {
         border: 2px solid #1de9b6;
       }
+
+      /* ===== ACTIVIDADES ===== */
       .actividades-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -93,28 +106,31 @@
         <li><a href="index.html">Inicio</a></li>
         <li><a href="index.html#destinos">Destinos</a></li>
         <li><a href="index.html#contacto">Contacto</a></li>
+        <!-- ===== AUTENTICACIÓN ===== -->
         <li id="auth-links">
-          <a href="login.html">Iniciar Sesión</a
-          ><a href="login.html#registro">Registrarse</a>
+          <a href="login.html">Iniciar Sesión</a>
+          <a href="login.html#registro">Registrarse</a>
         </li>
         <li id="user-info" style="display: none">
-          <span id="user-name"></span
-          ><a href="#" id="logout-link">Cerrar Sesión</a>
+          <span id="user-name"></span>
+          <a href="#" id="logout-link">Cerrar Sesión</a>
         </li>
       </ul>
     </nav>
 
     <main class="destino-detalle">
+      <!-- ===== BANNER CON IMAGEN FIJA ===== -->
       <div class="destino-banner" id="destino-banner">
         <div class="destino-titulo">
-          <h1>Catarata de Caracucho</h1>
-          <p>“Donde la montaña canta con el agua” 💧</p>
+          <h1 id="destino-nombre">Catarata de Caracucho</h1>
+          <p id="destino-slogan">“Donde la montaña canta con el agua” 💧</p>
         </div>
       </div>
+
       <div class="destino-contenido">
         <div class="destino-info">
           <h2>💦 Un paraíso escondido en la sierra</h2>
-          <p>
+          <p id="destino-descripcion">
             La Catarata de Caracucho es una imponente caída de agua de más de 50
             metros, rodeada de una exuberante vegetación andina. El sonido del
             agua, la neblina fresca y el verde intenso del paisaje crean una
@@ -123,12 +139,12 @@
           </p>
 
           <h2>📍 Ubicación</h2>
-          <p class="location">
+          <p id="destino-ubicacion" class="location">
             Distrito de Canchaque, provincia de Huancabamba, Piura.
           </p>
 
           <h2>🚶 Cómo llegar desde Piura</h2>
-          <p>
+          <p id="destino-como-llegar">
             Desde Piura, toma un bus hacia Canchaque (aproximadamente
             <strong>4 horas</strong>). Desde la plaza de Canchaque, contrata un
             mototaxi hasta el inicio del sendero (30 min) y luego camina cerca
@@ -136,18 +152,26 @@
           </p>
 
           <h2>📅 Mejores meses para visitar</h2>
-          <p>
+          <p id="destino-meses">
             <strong>Mayo a agosto</strong> ofrecen un clima más seco y soleado,
             ideal para realizar la caminata y disfrutar del paisaje sin lluvias.
           </p>
 
           <h2>🍽️ Gastronomía típica</h2>
-          <p>
+          <p id="destino-gastronomia">
             La zona es conocida por su <strong>caldo de gallina</strong> y su
             <strong>trucha frita</strong>, platos que te reconfortarán después
             de la caminata.
           </p>
 
+          <h2>📖 Historia y cultura</h2>
+          <p id="destino-historia">
+            La catarata es un destino emergente para el turismo de naturaleza.
+            La comunidad local ha trabajado en la señalización y conservación
+            del sendero, convirtiéndolo en un lugar ideal para el ecoturismo.
+          </p>
+
+          <!-- ===== ACTIVIDADES ===== -->
           <h2>⚡ Actividades para disfrutar</h2>
           <div class="actividades-grid">
             <div class="actividad-item">
@@ -172,8 +196,12 @@
           <div class="destino-video">
             <h2>🎥 Video del lugar</h2>
             <div id="destino-video-container">
-              <video controls width="100%" style="border-radius: 16px; max-width: 800px;">
-                <source src="../video/catarata2.mp4" type="video/mp4">
+              <video
+                controls
+                width="100%"
+                style="border-radius: 16px; max-width: 800px"
+              >
+                <source src="../video/catarata2.mp4" type="video/mp4" />
                 Tu navegador no soporta el elemento video.
               </video>
             </div>
@@ -183,7 +211,21 @@
           <div class="destino-mapa">
             <h2>🗺️ Ubicación en Google Maps</h2>
             <div id="destino-gps">
-              <a href="https://maps.app.goo.gl/QdMAAX8dMw6jKCNk7" target="_blank" style="display:inline-block; background:#3a7b8c; color:#fff; padding:0.8rem 2rem; border-radius:60px; font-weight:600; text-decoration:none; transition:all 0.3s ease; box-shadow:0 4px 16px rgba(58,123,140,0.25);">
+              <a
+                href="https://maps.app.goo.gl/QdMAAX8dMw6jKCNk7"
+                target="_blank"
+                style="
+                  display: inline-block;
+                  background: #3a7b8c;
+                  color: #fff;
+                  padding: 0.8rem 2rem;
+                  border-radius: 60px;
+                  font-weight: 600;
+                  text-decoration: none;
+                  transition: all 0.3s ease;
+                  box-shadow: 0 4px 16px rgba(58, 123, 140, 0.25);
+                "
+              >
                 🗺️ Ver en Google Maps
               </a>
             </div>
@@ -192,6 +234,19 @@
         <a href="index.html" class="btn btn-back">Volver al Inicio</a>
       </div>
     </main>
+
     <script src="../js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Cargar los textos desde la API (ID = 6 para Caracucho)
+        if (typeof cargarDestinoPorId === "function") {
+          cargarDestinoPorId(6);
+        }
+        // Actualizar la interfaz de autenticación
+        if (typeof actualizarUIUsuario === "function") {
+          setTimeout(actualizarUIUsuario, 100);
+        }
+      });
+    </script>
   </body>
 </html>

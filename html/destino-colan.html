@@ -14,8 +14,10 @@
     <link rel="stylesheet" href="../css/destino.css" />
     <style>
       .destino-banner {
-        background-image: url("../img/balneario-de-colan.jpg");
+        background-image: url("../img/balneario de colan.jpg");
         background-color: #1b4d3d;
+        background-size: cover;
+        background-position: center;
       }
       .destino-banner::after {
         background: linear-gradient(
@@ -43,6 +45,49 @@
         background: #1b6b62;
         box-shadow: 0 8px 28px rgba(42, 157, 143, 0.4);
       }
+
+      /* ===== ACTIVIDADES ===== */
+      .actividades {
+        margin-top: 1.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 20px;
+        padding: 1.5rem 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .actividades h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+        border-bottom: 3px solid #2a9d8f;
+        padding-bottom: 0.3rem;
+        display: inline-block;
+        margin-bottom: 1.2rem;
+      }
+      .actividades ul {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.8rem 1.5rem;
+      }
+      .actividades ul li {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: #d1d5db;
+        font-size: 1rem;
+        padding: 0.4rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .actividades ul li:last-child {
+        border-bottom: none;
+      }
+      .actividades ul li .icon {
+        font-size: 1.3rem;
+        width: 2rem;
+        text-align: center;
+        flex-shrink: 0;
+      }
     </style>
   </head>
   <body>
@@ -53,12 +98,12 @@
         <li><a href="index.html#destinos">Destinos</a></li>
         <li><a href="index.html#contacto">Contacto</a></li>
         <li id="auth-links">
-          <a href="login.html">Iniciar Sesión</a
-          ><a href="login.html#registro">Registrarse</a>
+          <a href="login.html">Iniciar Sesión</a>
+          <a href="login.html#registro">Registrarse</a>
         </li>
         <li id="user-info" style="display: none">
-          <span id="user-name"></span
-          ><a href="#" id="logout-link">Cerrar Sesión</a>
+          <span id="user-name"></span>
+          <a href="#" id="logout-link">Cerrar Sesión</a>
         </li>
       </ul>
     </nav>
@@ -129,6 +174,24 @@
             cercanas.
           </p>
 
+          <!-- ===== ACTIVIDADES ===== -->
+          <div class="actividades">
+            <h2>🏄 Actividades para disfrutar</h2>
+            <ul>
+              <li><span class="icon">🏊</span> Baño en aguas esmeralda</li>
+              <li><span class="icon">🤿</span> Snorkel y observación marina</li>
+              <li><span class="icon">🚣</span> Kayak y paseos en bote</li>
+              <li><span class="icon">🏄</span> Sandboard en dunas cercanas</li>
+              <li>
+                <span class="icon">🌅</span> Atardecer desde el Mirador de Colán
+              </li>
+              <li>
+                <span class="icon">📸</span> Fotografía de casonas de madera
+              </li>
+            </ul>
+          </div>
+
+          <!-- ===== VIDEO FIJO ===== -->
           <div class="destino-video">
             <h2>🎥 Video del lugar</h2>
             <div id="destino-video-container">
@@ -142,19 +205,8 @@
               </video>
             </div>
           </div>
-          <!-- Actividades -->
-<div class="actividades">
-  <h2>🏄 Actividades para disfrutar</h2>
-  <ul>
-    <li><span class="icon">🏊</span> Baño en aguas esmeralda</li>
-    <li><span class="icon">🤿</span> Snorkel y observación marina</li>
-    <li><span class="icon">🚣</span> Kayak y paseos en bote</li>
-    <li><span class="icon">🏄</span> Sandboard en dunas cercanas</li>
-    <li><span class="icon">🌅</span> Atardecer desde el Mirador de Colán</li>
-    <li><span class="icon">📸</span> Fotografía de casonas de madera</li>
-  </ul>
-</div>
 
+          <!-- ===== MAPA FIJO ===== -->
           <div class="destino-mapa">
             <h2>🗺️ Ubicación en Google Maps</h2>
             <div id="destino-gps">
@@ -163,14 +215,14 @@
                 target="_blank"
                 style="
                   display: inline-block;
-                  background: #ff7e5f;
+                  background: #2a9d8f;
                   color: #fff;
                   padding: 0.8rem 2rem;
                   border-radius: 60px;
                   font-weight: 600;
                   text-decoration: none;
                   transition: all 0.3s ease;
-                  box-shadow: 0 4px 16px rgba(255, 126, 95, 0.25);
+                  box-shadow: 0 4px 16px rgba(42, 157, 143, 0.25);
                 "
               >
                 🗺️ Ver en Google Maps
@@ -185,7 +237,14 @@
     <script src="../js/script.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        if (typeof cargarDestinoPorId === "function") cargarDestinoPorId(1);
+        // Cargar los textos desde la API (ID = 1 para Colán)
+        if (typeof cargarDestinoPorId === "function") {
+          cargarDestinoPorId(1);
+        }
+        // 🔥 NUEVO: Forzar actualización de la autenticación
+        if (typeof actualizarUIUsuario === "function") {
+          setTimeout(actualizarUIUsuario, 100);
+        }
       });
     </script>
   </body>
